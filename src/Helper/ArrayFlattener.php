@@ -12,7 +12,7 @@ class ArrayFlattener
      * @param string $leadingKey
      * @return void
      */
-     public static function getReducedArray(array $data, array &$result, string $leadingKey = ''): void
+    public static function getReducedArray(array $data, array &$result, string $leadingKey = ''): void
     {
         foreach (array_keys($data) as $k) {
             $newKey = '' === $leadingKey ? $k : "$leadingKey.$k";
