@@ -1,0 +1,20 @@
+{
+    "name": "fiedsch/pathdumper",
+    "description": "Dump the data of an array so it displays the \"path\" that you would use in a twig template to access the respectice elements",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Fieger",
+            "homepage": "https://github.com/fiedsch"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fiedsch\\Pathdumper\\": "src/"
+        }
+    }
+}
