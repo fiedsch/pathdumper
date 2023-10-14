@@ -16,13 +16,22 @@ class ArrayFlattener
     {
         foreach (array_keys($data) as $k) {
             $newKey = '' === $leadingKey ? $k : "$leadingKey.$k";
-                $result[$newKey] = $data[$k];
             if (is_scalar($data[$k]) || null === $data[$k]) {
+                $result[$newKey] = match (gettype($data[$k])) {
+                    'boolean' => $data[$k] ? 'true' : 'false',
+                    'string' => '"'.$data[$k].'"',
+                    'NULL' => 'null',
+                    default => $data[$k],
+                };
             } else {
-                    $result[$newKey] = '[]';
                 if (is_array($data[$k])) {
+                    if (empty($data[$k])) {
+                        $result[$newKey] = '[]';
+                    } else {
+                        self::getReducedArray($data[$k], $result, $newKey);
+                    }
                 } else {
-                    self::getReducedArray($data[$k], $result, $newKey);
+                    $result[$newKey] = sprintf('%s', get_class($data[$k]));
                 }
             }
         }
