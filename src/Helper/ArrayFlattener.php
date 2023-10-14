@@ -16,11 +16,11 @@ class ArrayFlattener
     {
         foreach (array_keys($data) as $k) {
             $newKey = '' === $leadingKey ? $k : "$leadingKey.$k";
-            if (is_scalar($data[$k])) {
                 $result[$newKey] = $data[$k];
+            if (is_scalar($data[$k]) || null === $data[$k]) {
             } else {
-                if (is_array($data[$k]) && empty($data[$k])) {
                     $result[$newKey] = '[]';
+                if (is_array($data[$k])) {
                 } else {
                     self::getReducedArray($data[$k], $result, $newKey);
                 }
