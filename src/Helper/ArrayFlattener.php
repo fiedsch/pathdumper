@@ -15,7 +15,7 @@ class ArrayFlattener
     public static function getReducedArray(array $data, array &$result, string $leadingKey = ''): void
     {
         foreach (array_keys($data) as $k) {
-            $newKey = '' === $leadingKey ? $k : "$leadingKey.$k";
+            $newKey = '' === $leadingKey ? (string)$k : "$leadingKey.$k";
             if (is_scalar($data[$k]) || null === $data[$k]) {
                 $result[$newKey] = match (gettype($data[$k])) {
                     'boolean' => $data[$k] ? 'true' : 'false',
