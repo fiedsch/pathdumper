@@ -30,10 +30,10 @@ class Dumper
     }
 
     /**
-     * Returns the output of @param array $data
-     * @return string
-     *@see displayData() as string.
+     * Returns the output of @see displayData() as string.
      *
+     * @param array $data
+     * @return string
      */
     public static function getDisplayDataAsString(array $data): string
     {
