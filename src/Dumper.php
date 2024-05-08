@@ -35,10 +35,10 @@ class Dumper
      * @param array $data
      * @return string
      */
-    public static function getDisplayDataAsString(array $data): string
+    public static function getDisplayDataAsString(array $data, string $lineCommentCharacter = '', bool $showCodePosition = true): string
     {
         ob_start();
-        self::displayData($data);
+        self::displayData($data, $lineCommentCharacter, $showCodePosition);
         return ob_get_clean();
     }
 
