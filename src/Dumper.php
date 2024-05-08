@@ -15,17 +15,17 @@ class Dumper
      * @param array $data
      * @return void
      */
-    public static function displayData(array $data, bool $showCodePosition = true): void
+    public static function displayData(array $data, string $lineCommentCharacter = '', bool $showCodePosition = true): void
     {
         // Visual Debug der Datenstruktur
         $flattened = [];
         ArrayFlattener::getReducedArray($data, $flattened);
         if ($showCodePosition) {
             $backtrace = debug_backtrace(0)[0];
-            printf("Called in file %s, line %d:\n", $backtrace['file'], $backtrace['line']);
+            printf("%sCalled in file %s, line %d:\n", $lineCommentCharacter, $backtrace['file'], $backtrace['line']);
         }
         foreach ($flattened as $k => $v) {
-            print "$k => $v\n";
+            printf("%s$k => $v\n", $lineCommentCharacter);
         }
     }
 
