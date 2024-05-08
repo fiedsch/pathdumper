@@ -50,3 +50,15 @@ top_level_c => contains only a scalar value
 ```
 
 If you need the output as string, use `Dumper::getDisplayDataAsString()`.
+
+### Optional parameters
+
+Use the optional parameters 
+
+* `string $lineCommentCharacter = ''` and/or 
+* `bool $showCodePosition = true` 
+
+of `Dumper::displayData` or `Dumper::getDisplayDataAsString` to 
+
+* prefix the output with a line comment string or 
+* do not output the code position where the respective method was called 
