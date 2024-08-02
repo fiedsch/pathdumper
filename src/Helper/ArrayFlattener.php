@@ -21,7 +21,7 @@ class ArrayFlattener
             } else {
                 if (is_array($data[$k])) {
                     if (empty($data[$k])) {
-                        $result[$newKey] = '[]';
+                        $result[$newKey] = [];
                     } else {
                         self::getReducedArray($data[$k], $result, $newKey);
                     }
