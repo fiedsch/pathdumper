@@ -25,7 +25,7 @@ class Dumper
             printf("%sCalled in file %s, line %d:\n", $lineCommentCharacter, $backtrace['file'], $backtrace['line']);
         }
         foreach ($flattened as $k => $v) {
-            printf("%s%s => %s\n", $lineCommentCharacter, $k, $v);
+            printf("%s%s => %s (%s)\n", $lineCommentCharacter, $k, $v, gettype($v));
         }
     }
 

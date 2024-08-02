@@ -17,12 +17,7 @@ class ArrayFlattener
         foreach (array_keys($data) as $k) {
             $newKey = '' === $leadingKey ? (string)$k : "$leadingKey.$k";
             if (is_scalar($data[$k]) || null === $data[$k]) {
-                $result[$newKey] = match (gettype($data[$k])) {
-                    'boolean' => $data[$k] ? 'true' : 'false',
-                    'string' => '"'.$data[$k].'"',
-                    'NULL' => 'null',
-                    default => $data[$k],
-                };
+                $result[$newKey] = $data[$k];
             } else {
                 if (is_array($data[$k])) {
                     if (empty($data[$k])) {
