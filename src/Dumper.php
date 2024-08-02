@@ -25,8 +25,22 @@ class Dumper
             printf("%sCalled in file %s, line %d:\n", $lineCommentCharacter, $backtrace['file'], $backtrace['line']);
         }
         foreach ($flattened as $k => $v) {
-            printf("%s%s => %s (%s)\n", $lineCommentCharacter, $k, $v, gettype($v));
+            printf("%s%s => %s (%s)\n", $lineCommentCharacter, $k, self::getDisplayValue($v), gettype($v));
         }
+    }
+
+    public static function getDisplayValue(mixed $value): string
+    {
+        return match (gettype($value)) {
+            'boolean' => $value ? 'true' : 'false',
+            'NULL' => 'null',
+            'object' => '...',
+            'resource' => '...',
+            'resource (closed)' => '...',
+            'unknown type' => '...',
+            'array' => '[]',
+            default => (string)$value
+        };
     }
 
     /**
